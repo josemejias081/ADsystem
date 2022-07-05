@@ -1,0 +1,18 @@
+<h1>Nuevo Cliente</h1>
+<div class="card">
+  <div class="card-header">
+    <h5><%= @client.name %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Dirección: <%= @client.address %></li>
+    <li class="list-group-item">Teléfono: <%= @client.phone %></li>
+    <li class="list-group-item">Correo: <%= @client.email %></li>
+  </ul>
+  <div class="card-footer">
+    <div class="card-body">
+      <%= link_to "Editar", edit_client_path(@client), class: "card-link" %> |
+      <%= link_to "Volver", clients_path, class: "card-link" %>
+      <%= link_to "Eliminar", @client, data: {turbo_method: :delete},class: "card-link" %>
+    </div>
+  </div>
+</div>
