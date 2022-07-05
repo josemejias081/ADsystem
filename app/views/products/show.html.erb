@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+<div class="card" style="width: 18rem;">
+  <img src="https://www.tuli-shop.com/media/catalog/category/6648_Linear_Guideways_Economy_Hiwin_interchangeable.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Producto: <%= @product.name %></h5>
+    <p class="card-text">Descripción: <%= @product.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Existencia: <%= @product.stock %></li>
+    <li class="list-group-item">Precio: <%= @product.price %></li>
+    <li class="list-group-item">Categoría: <%= @product.category.name %></li>
+  </ul>
+  <div class="card-body">
+    <%= link_to "Editar", edit_product_path(@product), class: "card-link" %> |
+    <%= link_to "Volver", products_path, class: "card-link"  %>
+    <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "card-link"  %>
+  </div>
+</div>
+
