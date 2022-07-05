@@ -1,0 +1,13 @@
+<h1>Nueva Nota</h1>
+<div class="card">
+  <div class="card-header">
+    <h5><%= @note.name %></h5>
+  </div>
+  <div class="card-footer">
+    <div class="card-body">
+      <%= link_to "Editar", edit_note_path(@note), class: "card-link" %> |
+      <%= link_to "Volver", notes_path, class: "card-link" %>
+      <%= link_to "Eliminar", @note, data: {turbo_method: :delete},class: "card-link" %>
+    </div>
+  </div>
+</div>
