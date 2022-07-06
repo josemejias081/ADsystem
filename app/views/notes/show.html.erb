@@ -2,6 +2,14 @@
 <div class="card">
   <div class="card-header">
     <h5><%= @note.name %></h5>
+    <div class="panel-body well" >
+            <h5 class="card-title p-3">Productos</h5>
+            <ul>
+              <% @note.products.each do |product|%>
+                <li><%= product.name %></li>
+              <% end %>
+            </ul>
+          </div>
   </div>
   <div class="card-footer">
     <div class="card-body">

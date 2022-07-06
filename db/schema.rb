@@ -27,20 +27,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_163452) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "note_products", force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes_products", force: :cascade do |t|
     t.integer "quantity"
     t.integer "product_id"
     t.integer "note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_note_products_on_note_id"
-    t.index ["product_id"], name: "index_note_products_on_product_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_notes_products_on_note_id"
+    t.index ["product_id"], name: "index_notes_products_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_163452) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  add_foreign_key "note_products", "notes"
-  add_foreign_key "note_products", "products"
+  add_foreign_key "notes_products", "notes"
+  add_foreign_key "notes_products", "products"
   add_foreign_key "products", "categories"
 end

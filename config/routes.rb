@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   resources :products
   resources :clients
   resources :notes
+  resources :note_products
+
+  #resources :notes do
+  #  resources :products
+
+  #end
 end

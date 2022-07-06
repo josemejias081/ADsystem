@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  
   before_action :set_note, only: [:show, :edit, :update, :delete ]
 
   def index
@@ -9,13 +10,16 @@ class NotesController < ApplicationController
   end
 
   def new
+    @products = Product.all
     @note = Note.new
   end
 
   def edit
+    @products = Product.all
   end
 
   def create
+    @products = Product.all
     @note = Note.new(note_params)
     if @note.save
       redirect_to @note, notice: "Note was successfully created"
