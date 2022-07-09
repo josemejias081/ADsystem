@@ -3,12 +3,14 @@
   <% @categories.each do |category| %>
     <div class="col-sm-3">
       <div class="card">
-        <div class="card-header">
-          <h5 class="card-title"><%= category.name %></h5>
+        <div class="card-header bg-primary">
+          <h5 class="card-title text-white pt-2"><%= category.name %></h5>
         </div>
         <div class="card-body">
           <p><%= category.description %></p>
-          <%= link_to 'Ver', category, class: "btn btn-sm btn-success" %>
+        </div>
+         <div class="card-footer d-grid gap-2">
+          <%= link_to 'Ver', category, class: "btn btn-info btn-block text-white" %>
         </div>
       </div>
     </div>

@@ -1,36 +1,38 @@
-<div class="card">
-  <div class="card-body">
-    <%= form_with model: @note do |f| %>
-      <% if @note.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
-          <ul>
-            <% note.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+<%= form_for @note do |f| %>
+  <% if @note.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+      <ul>
+        <% note.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <div class="row">
-        <div class=" col-md-6 form-group">
-          <%= f.label :Nombre %>
-          <%= f.text_field :name,class: 'form-control' %>
-        </div>
-      </div>
+  <div class="row border border-success">
+    <div class=" col-md-12 form-group my-3">
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre de la nota' %>
+    </div>
+  </div>
 
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label>Egregar producto</label><br>
-          <div class="text-dark">
-            <%= f.select :product_ids, options_from_collection_for_select(@products, :id, :name, @note.products.pluck(:id)), {}, multiple: true, id: "product_ids", class: "form-control select-product"%>
-          </div>
-        </div>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Guardar", class:"btn btn-sm btn-success mt-3"%>
-      </div>
+  <h1>Campos</h1>
+  <div id='add'class="row mb-3 border border-danger" >
+    <div class="col-md-6">Seleccione Producto</div>
+    <div class="col-md-3">Cantidad</div>
+    <div class="col-md-1">Acciones</div>
+    <%= f.fields_for :notes_products do |notes_product| %>
+      <%= render 'add_fields', form: notes_product %>
     <% end %>
   </div>
-</div>
+
+  <div class=" form-actions mb-3 btn btn-primary btn-xs btn-block">
+    <%= link_to_add_nested(f, :notes_products, '#add', tag: 'span', partial: 'add_fields') do %>
+      <span><span class= "" >Agregar Campo</span></span>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar", class:"btn btn-sm btn-success mt-3"%>
+  </div>
+<% end %>

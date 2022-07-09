@@ -1,21 +1,39 @@
 <h1>Nueva Nota</h1>
 <div class="card">
   <div class="card-header">
-    <h5><%= @note.name %></h5>
-    <div class="panel-body well" >
-            <h5 class="card-title p-3">Productos</h5>
-            <ul>
-              <% @note.products.each do |product|%>
-                <li><%= product.name %></li>
-              <% end %>
-            </ul>
-          </div>
+    <h2 class="bg-primary px-2 text-white"><%= @note.name %></h2>
+    <div class="bg-info" >
+      <h3 class="card-title px-2">Productos</h3>
+    </div>
   </div>
-  <div class="card-footer">
-    <div class="card-body">
-      <%= link_to "Editar", edit_note_path(@note), class: "card-link" %> |
-      <%= link_to "Volver", notes_path, class: "card-link" %>
-      <%= link_to "Eliminar", @note, data: {turbo_method: :delete},class: "card-link" %>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @note.notes_products.each do |note_product|%>
+            <tr>
+              <td> <%= note_product.product.name %></td>
+              <td><%= note_product.product.description %></td>
+              <td><%= note_product.quantity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <div class="card-body">
+        <%= link_to "Crear nueva nota", new_note_path, class: "card-link" %>
+        <%= link_to "Editar", edit_note_path(@note), class: "card-link" %>
+        <%= link_to "Volver", notes_path, class: "card-link" %>
+        <%= link_to "Eliminar", @note, data: {turbo_method: :delete}, class: "card-link" %>
+      </div>
     </div>
   </div>
 </div>

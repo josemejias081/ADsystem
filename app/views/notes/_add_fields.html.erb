@@ -1,0 +1,9 @@
+<div class=" row text-dark">
+  <div class="col-md-6 mb-2">
+    <%= form.collection_select(:product_id, @products, :id, :name, {}, {class: "form-control select-product nput-group-btn"}) %>
+  </div>
+  <div class=" mb-2 col-md-3">
+    <%= form.number_field :quantity, class: "form-control", placeholder: 'Agregar cantidad' %>
+  </div>
+  <%= link_to_remove_nested(form, tag: 'div', link_text: 'Eliminar', tag_attributes: {class: "form-actions mb-3 btn btn-danger btn-xs col-md-2"}) %>
+</div>

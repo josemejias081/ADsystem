@@ -70,3 +70,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
