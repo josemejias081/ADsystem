@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    @notes_products = NotesProduct.all
+    @note_products = NoteProduct.all
     @products = Product.all
     @note = Note.new
    
@@ -18,7 +18,7 @@ class NotesController < ApplicationController
 
   def edit
     @products = Product.all
-    @notes_products = NotesProduct.all
+    @note_products = NoteProduct.all
   end
 
   def create
@@ -26,7 +26,7 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to @note, notice: "Note was successfully created"
     else
-      @notes_products = NotesProduct.all
+      @note_products = NoteProduct.all
       @products = Product.all
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class NotesController < ApplicationController
     if @note.update(note_params)
       redirect_to @note, notice: "Note was successfully updated"
     else
-      render :edit, status: :unprocessable_entity
+      render "edit"
     end
   end
 
@@ -51,6 +51,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:id, :name, notes_products_attributes: [:id, :quantity, :product_id, :note_id, :_destroy])
+      params.require(:note).permit(:id, :name, note_products_attributes: [:id, :quantity, :product_id, :note_id, :_destroy])
     end
 end

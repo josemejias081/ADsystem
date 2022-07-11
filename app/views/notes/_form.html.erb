@@ -21,13 +21,13 @@
     <div class="col-md-6">Seleccione Producto</div>
     <div class="col-md-3">Cantidad</div>
     <div class="col-md-1">Acciones</div>
-    <%= f.fields_for :notes_products do |notes_product| %>
+    <%= f.fields_for :note_products do |notes_product| %>
       <%= render 'add_fields', form: notes_product %>
     <% end %>
   </div>
 
   <div class=" form-actions mb-3 btn btn-primary btn-xs btn-block">
-    <%= link_to_add_nested(f, :notes_products, '#add', tag: 'span', partial: 'add_fields') do %>
+    <%= link_to_add_nested(f, :note_products, '#add', tag: 'span', partial: 'add_fields') do %>
       <span><span class= "" >Agregar Campo</span></span>
     <% end %>
   </div>

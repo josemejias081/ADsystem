@@ -1,0 +1,33 @@
+<%= form_for @warehouse_record do |f| %>
+  <% if @warehouse_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(warehouse_record.errors.count, "error") %> prohibited this warehouse_record from being saved:</h2>
+
+      <ul>
+        <% warehouse_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Campos</h1>
+  <div id='add'class="row mb-3 border border-danger" >
+    <div class="col-md-6">Seleccione Producto</div>
+    <div class="col-md-3">Cantidad</div>
+    <div class="col-md-1">Acciones</div>
+    <%= f.fields_for :warehouse_details do |warehouse_detail| %>
+      <%= render 'add_entry', form: warehouse_detail %>
+    <% end %>
+  </div>
+
+  <div class=" form-actions mb-3 btn btn-primary btn-xs btn-block">
+    <%= link_to_add_nested(f, :warehouse_details, '#add', tag: 'span', partial: 'add_entry') do %>
+      <span><span class= "" >Agregar Entrada</span></span>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar", class:"btn btn-sm btn-success mt-3"%>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<h1>Almacenes</h1>
+ <p>Número de almacenes: <%= @warehouse_records.count %></p>
+<div class="row">
+  <% @warehouse_records.each do |warehouse_record| %>
+    <div class="col-sm-3 mb-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"></h5>
+        </div>
+        <div class="card-footer d-grid gap-2">
+          <%= link_to 'Ver', warehouse_record, class: "btn btn-info btn-block text-white" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

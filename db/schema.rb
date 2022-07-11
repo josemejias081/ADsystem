@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_05_163452) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_10_222106) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -27,20 +27,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_163452) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "notes_products", force: :cascade do |t|
+  create_table "note_products", force: :cascade do |t|
     t.integer "quantity"
     t.integer "product_id"
     t.integer "note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_notes_products_on_note_id"
-    t.index ["product_id"], name: "index_notes_products_on_product_id"
+    t.index ["note_id"], name: "index_note_products_on_note_id"
+    t.index ["product_id"], name: "index_note_products_on_product_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -55,7 +55,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_163452) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  add_foreign_key "notes_products", "notes"
-  add_foreign_key "notes_products", "products"
+  create_table "warehouse_details", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "product_id", null: false
+    t.integer "warehouse_record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_warehouse_details_on_product_id"
+    t.index ["warehouse_record_id"], name: "index_warehouse_details_on_warehouse_record_id"
+  end
+
+  create_table "warehouse_records", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "note_products", "notes"
+  add_foreign_key "note_products", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "warehouse_details", "products"
+  add_foreign_key "warehouse_details", "warehouse_records"
 end

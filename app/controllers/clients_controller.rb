@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
     if @client.update(client_params)
       redirect_to @client, notice: "Client was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render "edit"
     end
   end
 
