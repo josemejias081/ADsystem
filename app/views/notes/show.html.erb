@@ -3,7 +3,12 @@
   <div class="card-header">
     <h2 class="bg-primary px-2 text-white"><%= @note.name %></h2>
     <div class="bg-info" >
-      <h3 class="card-title px-2">Productos</h3>
+      <p class="card-title px-2">Nombre del Cliente: Fulanito de Tal</p>
+      <p class="card-title px-2">Dirección: los cocos</p>
+      <p class="card-title px-2">Teléfono: los 5465353</p>
+    </div>
+    <div class="bg-info" > 
+      <p class="card-title px-2 py-1 text-white"> Fecha: <%= I18n.l(@note.created_at, format: '%d/%m/%Y') %></p>
     </div>
   </div>
   <div class="card-body">

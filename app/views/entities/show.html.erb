@@ -1,0 +1,24 @@
+<h1>Nuevo Cliente / Proveedor</h1>
+<div class="card">
+  <div class="card-header bg-primary">
+    <h5 class="card-title pt-2 text-white"><%= @entity.name %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Dirección: <%= @entity.address %></li>
+    <li class="list-group-item">Teléfono: <%= @entity.phone %></li>
+    <li class="list-group-item">Correo: <%= @entity.email %></li>
+    <% if @entity.client? %>
+      <li class="list-group-item">Estatus: Cliente</li>
+    <% elsif @entity.supplier? %>
+      <li class="list-group-item">Estatus: Proveedor</li>
+    <% end %>
+  </ul>
+  <div class="card-footer">
+    <div class="card-body">
+      <%= link_to "Editar", edit_entity_path(@entity), class: "card-link" %> |
+      <%= link_to "Volver", entities_path, class: "card-link" %>
+      <%= link_to "Eliminar", @entity, data: {turbo_method: :delete},class: "card-link" %>
+    </div>
+  </div>
+</div>
+ 

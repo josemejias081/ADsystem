@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :products
-  resources :clients
+  resources :entities
   resources :notes
   resources :note_products
 
