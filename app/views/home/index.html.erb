@@ -1,0 +1,38 @@
+<section id="no-info-home" class="page-section about-heading">
+  <div class="container">
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto ">
+          <div class="bg-faded rounded p-3 ">
+            <div class="">
+              <% if user_signed_in? %>
+                <h1 class="display-5 user-active">Hola <%= current_user.name %>!</h1>
+                <p class="lead">Bienvenido a tu espacio de aprendizaje online, 
+                                espero aprendas mucho, y pongas en practica esos conocimientos. <br> <span style="font-weight: bold;"> Úsalo con responsabilidad</span></p>
+              <% else %>
+                <h1 class="display-5">Hola, que tal!</h1>
+                <p class="lead">Este es un espacio, para ayudar a organizar tus recursos de aprendizaje online, 
+                                espero aprendas mucho, y pongas en practica esos conocimientos. <br> <span style="font-weight: bold;"> Úsalo con responsabilidad</span></p>
+                <hr class="my-2">
+              <% end%>
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-lower">Guia Virtual |</span>
+                <span class="section-heading-upper">Aprende &amp; Practica</span>
+              </h2>
+              <% if user_signed_in? %>
+                <p class="lead">
+                  <%= link_to " Recursos", my_topics_path, class:"btn-means"%>
+                </p>
+              <% else %>
+                <p class="lead">
+                  <%= link_to "Iniciar Sesión",  new_user_session_path, class:"btn btn-sm btn-success"%>
+                </p>
+              <% end %>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
