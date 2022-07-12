@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :warehouse_details
-  resources :warehouse_records
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,14 +11,12 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#welcome"
 
+  resources :warehouse_details
+  resources :warehouse_records
   resources :categories
   resources :products
   resources :entities
   resources :notes
   resources :note_products
 
-  #resources :notes do
-  #  resources :products
-
-  #end
 end
