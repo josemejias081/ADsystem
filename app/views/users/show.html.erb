@@ -1,0 +1,38 @@
+<h1>Nueva Nota</h1>
+<div class="card">
+  <div class="card-header">
+    <h2 class="bg-primary px-2 text-white"><%= @user.name %></h2>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo Electrónico</th>
+            <th>Rol</th>
+            <th>Fecha de ingreso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user|%>
+            <tr>
+              <td> <%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.role %></td>
+              <td><%= I18n.l(user.created_at, format: '%d/%m/%Y') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <div class="card-body">
+        <%= link_to "Agregar empleado", new_user_path, class: "card-link" %>
+        <%= link_to "Editar", edit_user_path(@user), class: "card-link" %>
+        <%= link_to "Volver", users_path, class: "card-link" %>
+        <%= link_to "Eliminar", @user, data: {turbo_method: :delete}, class: "card-link" %>
+      </div>
+    </div>
+  </div>
+</div>

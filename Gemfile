@@ -74,3 +74,5 @@ end
 gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
 
 gem 'devise'
+
+gem 'cancancan'

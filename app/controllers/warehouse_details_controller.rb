@@ -1,4 +1,5 @@
 class WarehouseDetailsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_warehouse_detail, only: [ :show, :edit, :update, :destroy ]
 
   def index
