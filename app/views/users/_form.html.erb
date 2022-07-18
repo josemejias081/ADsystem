@@ -1,9 +1,7 @@
 <section class=" row justify-content-center">
   <div class="col-md-8 p-4 p-md-5 mt-5 border rounded-3 bg-light">
   <h2>Registrarse</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
+    <%= form_for @user do |f| %>
       <div class="form-group mb-4">
         <%= f.text_field :name, autofocus: true, placeholder: "Nombre y Apellido",class: 'form-control' %>
       </div>
@@ -12,9 +10,8 @@
         <%= f.email_field :email, autofocus: true, placeholder: "Correo Electrónico", autocomplete: "email",class: 'form-control' %>
       </div>
 
-      <div class="form-group col-md-3">
-        <label>Roles</label><br>
-        <%= f.select(:role, users_role.map {|role| [t("roles.#{role}"),role]}, {}, {class: "form-control"}) %>
+      <div class="form-group mb-4 ">
+        <%= f.select( :role, User.roles.keys, {class: "form-control "}) %>
       </div>
 
       <div class="form-group mb-4">

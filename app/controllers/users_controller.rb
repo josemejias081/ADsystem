@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource #:through => :current_user
-  before_action :set_user, only: [:show, :edit, :update, :destroy ]
+  #class RegistrationsController < Devise::RegistrationsController
+  load_and_authorize_resource
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+
   def index
     @users = User.all
   end
@@ -12,13 +14,19 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path
+      
+      redirect_to users_path, notice: "Product was successfully created." 
     else
+      
       render :new
+      
     end
   end
 
   def show
+    #@user = User.find(params[:id])
+    #debugger
+    
   end
 
   def edit
@@ -43,6 +51,7 @@ class UsersController < ApplicationController
    end
 
    def user_params
-    params.require(:user).permit(:name, :email, :role, :password, :password_confirmation)
+    params.require(:user).permit(:id, :name, :email, :role, :password, :password_confirmation)
    end
+  #end
 end

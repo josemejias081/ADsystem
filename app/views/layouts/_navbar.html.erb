@@ -7,22 +7,20 @@
   <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-
-        <div class="dropdown mx-2">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonusers" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuarios
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Buttonusers">
-            <li><%= link_to 'Agregar empleado', new_user_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Editar datos",  edit_user_registration_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Iniciar Sesión",  new_user_session_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Lista de empleados",  users_path, class: "dropdown-item" %></li>
-            <% unless current_user.Administrador? %>
-            <li><%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-            <% end %>
-          </ul>
-        </div>
-
+        <% unless current_user.Empleado? %>
+          <div class="dropdown mx-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonusers" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuarios
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="Buttonusers">
+              <li><%= link_to 'Agregar empleado', new_user_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Editar datos",  edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Iniciar Sesión",  new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Lista de empleados",  users_path, class: "dropdown-item" %></li>
+              <li><%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </div>
+        <% end %>
         <div class="dropdown mx-2">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonproducts" data-bs-toggle="dropdown" aria-expanded="false">
             Productos
@@ -43,9 +41,7 @@
             Notas
           </button>
           <ul class="dropdown-menu" aria-labelledby="Buttonnotes">
-          
             <li><%= link_to 'Crear Nota', new_note_path, class: "dropdown-item" %></li>
-          
             <li><%= link_to 'Notas', notes_path, class: "dropdown-item" %></li>
           </ul>
         </div>
@@ -64,5 +60,3 @@
   <% end %>
   </div>
 </nav>
-
-

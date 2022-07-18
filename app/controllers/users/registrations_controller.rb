@@ -14,5 +14,9 @@ module Users
     def configure_account_update_params
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :role])
     end
+
+    def configure_show_params
+      devise_parameter_sanitizer.permit(:show, keys: [:name, :role])
+    end
   end
 end

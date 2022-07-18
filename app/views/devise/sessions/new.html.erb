@@ -31,7 +31,13 @@
             <%= f.submit "Entrar", class: " w-100 btn btn-lg btn-primary" %>
           </div>
         <% end %>
-        <small class="text-muted"><%= render "devise/shared/links" %></small>
+        <% if user_signed_in? %>
+          <% unless current_user.Empleado? %>
+            <% unless current_user.Administrador? or  current_user.Superadmin?%>
+              <small class="text-muted"><%= render "devise/shared/links" %></small>
+            <% end %>
+          <% end %>
+        <% end%>
       </div>
     </div>
   </div>

@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header bg-primary">
-    <h1 class="card-title pt-2 text-white">Almacen</h1>
+    <h1 class="card-title pt-2 text-white">Nómina</h1>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-stripe">
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th>Cod. Usuario</th>
+            <th>Cod.</th>
             <th>Nombre</th>
             <th>Correo Electrónico</th>
             <th>Rol</th>
@@ -16,14 +16,15 @@
           </tr>
         </thead>
         <tbody>
+        <% @users = User.all%>
           <% @users.each do |user| %>
           <tr>
             <td><%= user.id %></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
-            <td><%= user.created_at %></td>
-            <td class="d-grid gap-2"><%= link_to 'Ver', usert, class: "btn btn-info btn-block text-white" %></td>
+            <td><%= I18n.l(user.created_at, format: '%d/%m/%Y') %></td>
+            <td class="d-grid gap-2"><%= link_to 'Ver', user, class: "btn btn-info btn-block text-white" %></td>
           </tr>
           <% end %>
         </tbody>
