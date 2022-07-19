@@ -45,6 +45,12 @@ class NotesController < ApplicationController
     redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed."
   end
 
+  def delete_photo_attachment    
+    @photo = ActiveStorage::Blob.find(params[:asset_id])
+    @photo.attachments.first.purge
+    redirect_back(fallback_location: products_path)
+  end
+
   private
     def set_note
       @note = Note.find(params[:id])

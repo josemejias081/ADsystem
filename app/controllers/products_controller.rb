@@ -42,6 +42,12 @@ class ProductsController < ApplicationController
     redirect_to products_path, status: :see_other, notice: "Product was successfully destroyed." 
   end
 
+  def delete_photos_attachment    
+    @photo = ActiveStorage::Blob.find(params[:asset_id])
+    @photo.attachments.first.purge
+    redirect_back(fallback_location: products_path)
+  end
+
   private
     def set_product
       @product = Product.find(params[:id])

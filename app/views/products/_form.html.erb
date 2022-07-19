@@ -13,9 +13,9 @@
       <% end %>
 
       <div class="row">
-        <div class=" col-md-6 form-group">
+        <div class="col-md-6 form-group">
           <%= f.label :Foto, style: "display: block" %>
-          <%= f.text_field :photo,class: 'form-control' %>
+          <%= f.file_field :photo, class: 'form-control attachments', placeholder: '' %>
         </div>
         <div class=" col-md-6 form-group">
           <%= f.label :Nombre, style: "display: block" %>

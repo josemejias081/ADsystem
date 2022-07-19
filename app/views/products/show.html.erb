@@ -1,20 +1,23 @@
-<p style="color: green"><%= notice %></p>
-<div class="card" style="width: 18rem;">
-  <img src="https://imagenes.elpais.com/resizer/g5gl3mqXV5BFI-zyj4fWzScoZuQ=/1960x0/cloudfront-eu-central-1.images.arcpublishing.com/prisa/FRTKEJ6GXPU6YYDV6OTH42JBME.jpg" class="card-img-top" alt="...">
-  <div class="card-header">
-    <h5 class="card-title">Producto: <%= @product.name %></h5>
-    <p class="card-text">Descripción: <%= @product.description %></p>
+<section class="row justify-content-center">
+  <div class="col-auto mt-5">
+    <div class="card" style="width: 27rem;">      
+      <%= image_tag @product.photo, class: "card-img-top" %>
+      <div class="card-header">
+        <h5 class="card-title">Producto: <%= @product.name %></h5>
+        <p class="card-text">Descripción: <%= @product.description %></p>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Existencia: <%= @product.stock %></li>
+          <li class="list-group-item">Precio: <%= @product.price %></li>
+          <li class="list-group-item">Categoría: <%= @product.category.name %></li>
+        </ul>
+      </div>
+      <div class="card-footer text-center">
+        <%= link_to "Editar", edit_product_path(@product), class: "card-link" %>
+        <%= link_to "Volver", products_path, class: "card-link" %>
+        <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "card-link" %>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Existencia: <%= @product.stock %></li>
-      <li class="list-group-item">Precio: <%= @product.price %></li>
-      <li class="list-group-item">Categoría: <%= @product.category.name %></li>
-    </ul>
-  </div>
-  <div class="card-footer">
-    <%= link_to "Editar", edit_product_path(@product), class: "card-link" %>
-    <%= link_to "Volver", products_path, class: "card-link" %>
-    <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "card-link" %>
-  </div>
-</div>
+</section>
