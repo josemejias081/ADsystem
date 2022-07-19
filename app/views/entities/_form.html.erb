@@ -33,14 +33,14 @@
           <%= f.text_field :email,class: 'form-control'%>
         </div>
 
-        <div class="form-group col-md-3">
-          <%= f.label "Marcar si es cliente" %>
-          <%= f.check_box :client, class: "form-control check_box mx-5", placeholder: "" %>
+        <div class="form-check form-switch col-md-6 mt-3 mx-3">
+          <%= f.label "Marcar si es cliente", class: "form-check-label" %>
+          <%= f.check_box :client, class: "form-check-input", placeholder: "" %>
         </div>
 
-        <div class="form-group col-md-3">
-          <%= f.label "Marcar si es Proveedor" %>
-          <%= f.check_box :supplier, class: "form-control check_box mx-5", placeholder: "" %>
+        <div class="form-check form-switch col-md-6 mt-3 mx-3">
+          <%= f.label "Marcar si es Proveedor", class: "form-check-label" %>
+          <%= f.check_box :supplier, class: "form-check-input", placeholder: "" %>
         </div>
 
         <div class="actions">
