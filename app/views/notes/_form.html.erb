@@ -14,9 +14,12 @@
     <div class=" col-md-12 form-group my-3">
       <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre de la nota' %>
     </div>
+    <div class="form-check form-switch col-md-6 mt-3 mx-3">
+      <strong><%= f.label "Marcar si es nota de entrega", class: "form-check-label" %></strong>
+      <%= f.check_box :transaction_type, class: "form-check-input", placeholder: "" %>
+    </div>
   </div>
-
-  <h1>Campos</h1>
+  <h2>Campos</h2>
   <div id='add'class="row mb-3 border border-info" >
     <div class="col-md-6">Seleccione Producto</div>
     <div class="col-md-3">Cantidad</div>

@@ -3,5 +3,4 @@ class Note < ApplicationRecord
   has_many :note_products, dependent: :destroy
   has_many :products, through: :note_products
   accepts_nested_attributes_for :note_products, reject_if: :all_blank, allow_destroy: true
-  
 end
