@@ -79,4 +79,6 @@ gem 'cancancan'
 
 gem 'active_storage_validations'
 
+gem 'counter_culture', '~> 2.0'
+
 
