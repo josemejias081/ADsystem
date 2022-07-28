@@ -44,6 +44,6 @@ class EntitiesController < ApplicationController
     end
 
     def entity_params
-      params.require(:entity).permit(:name, :email, :phone, :address, :client, :supplier)
+      params.require(:entity).permit(:name, :email, :phone, :address, :client, :supplier)#:note_id
     end
 end

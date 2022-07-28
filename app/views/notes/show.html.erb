@@ -3,12 +3,17 @@
   <div class="card-header">
     <h2 class="bg-primary px-2 text-white"><%= @note.name %></h2>
     <div class="bg-info" >
-      <p class="card-title px-2">Nombre del Cliente: Fulanito de Tal</p>
-      <p class="card-title px-2">Dirección: los cocos</p>
-      <p class="card-title px-2">Teléfono: los 5465353</p>
+      <p class="card-title px-2"><span class="fw-bold">Nombre de la empresa:</span> <%= @note.entity.name %></p>
+      <p class="card-title px-2"><span class="fw-bold">Dirección:</span> <%= @note.entity.address %></p>
+      <p class="card-title px-2"><span class="fw-bold">Teléfono:</span> <%= @note.entity.phone %></p>
+      <% if @note.entity.client? %>
+        <p class="card-title px-2"><span class="fw-bold">Estatus:</span> Cliente</p>
+      <% elsif @note.entity.supplier? %>
+        <p class="card-title px-2"><span class="fw-bold">Estatus:</span> Proveedor</p>
+      <% end %>
     </div>
     <div class="bg-info" > 
-      <p class="card-title px-2 py-1 text-white"> Fecha: <%= I18n.l(@note.created_at, format: '%d/%m/%Y') %></p>
+      <p class="card-title px-2 py-1 text-white"><span class="fw-bold">Fecha:</span> <%= I18n.l(@note.created_at, format: '%d/%m/%Y') %></p>
     </div>
   </div>
   <div class="card-body">
@@ -24,7 +29,7 @@
         <tbody>
           <% @note.note_products.each do |note_product|%>
             <tr>
-              <td> <%= note_product.product.name %></td>
+              <td><%= note_product.product.name %></td>
               <td><%= note_product.product.description %></td>
               <td><%= note_product.quantity.abs %></td>
             </tr>

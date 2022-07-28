@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #Definir roles
-
   #Mostrar roles en el form
   enum role: [:Empleado, :Administrador, :Superadmin]
   after_initialize :set_default_role, :if => :new_record?

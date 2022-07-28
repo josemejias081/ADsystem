@@ -1,9 +1,9 @@
 <%= form_for @note do |f| %>
   <% if @note.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
       <ul>
-        <% note.errors.each do |error| %>
+        <% @note.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -17,11 +17,15 @@
   </div>
 
   <div class="row border border-top-0 border-primary">
-    <div class="col-md-12 form-group my-3">
-      <%= f.select( :transaction_type, Note.transaction_types.keys, {class: "form-control "}) %>
+    <div class="col-md-6 form-group my-3">
+      <h5>Tipo de nota:</h5><%= f.select( :transaction_type, Note.transaction_types.keys, {class: "form-control select-product nput-group-btn"}) %>
+    </div>
+
+    <div class="col-md-6 form-group my-3">
+      <h5>Seleccione Cliente / Proveedor:</h5><%= f.collection_select(:entity_id, @entities, :id, :name, {}, {class: "form-control select-product nput-group-btn"}) %>
     </div>
   </div>
-  <h2>Campos</h2>
+  <h3>Campos</h3>
   <div id='add'class="row mb-3 border border-info" >
     <div class="col-md-6">Seleccione Producto</div>
     <div class="col-md-3">Cantidad</div>
