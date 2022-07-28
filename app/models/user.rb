@@ -4,10 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- 
-
   #Definir roles
-  #include PermissionsRoles
 
   #Mostrar roles en el form
   enum role: [:Empleado, :Administrador, :Superadmin]
@@ -20,9 +17,5 @@ class User < ApplicationRecord
   def has_role role
     self.role.name == role
   end
-
-  scope :no_Superadmin, ->{ where.not(role: 2) }
-
-  scope :no_Administrador, ->{ where.not(role: 1) }
 
 end

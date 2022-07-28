@@ -1,0 +1,2 @@
+module NoteProductsHelper
+end

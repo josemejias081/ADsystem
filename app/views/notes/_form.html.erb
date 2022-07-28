@@ -14,9 +14,11 @@
     <div class=" col-md-12 form-group my-3">
       <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre de la nota' %>
     </div>
-    <div class="form-check form-switch col-md-6 mt-3 mx-3">
-      <strong><%= f.label "Marcar si es nota de entrega", class: "form-check-label" %></strong>
-      <%= f.check_box :transaction_type, class: "form-check-input", placeholder: "" %>
+  </div>
+
+  <div class="row border border-top-0 border-primary">
+    <div class="col-md-12 form-group my-3">
+      <%= f.select( :transaction_type, Note.transaction_types.keys, {class: "form-control "}) %>
     </div>
   </div>
   <h2>Campos</h2>

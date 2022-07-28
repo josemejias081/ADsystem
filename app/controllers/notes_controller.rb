@@ -57,6 +57,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:id, :name, note_products_attributes: [:id, :quantity, :product_id, :note_id, :_destroy])
+      params.require(:note).permit(:id, :name, :transaction_type, note_products_attributes: [:id, :quantity, :product_id, :note_id, :_destroy])
     end
 end

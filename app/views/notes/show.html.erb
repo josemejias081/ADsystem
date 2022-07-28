@@ -26,7 +26,7 @@
             <tr>
               <td> <%= note_product.product.name %></td>
               <td><%= note_product.product.description %></td>
-              <td><%= note_product.quantity %></td>
+              <td><%= note_product.quantity.abs %></td>
             </tr>
           <% end %>
         </tbody>
