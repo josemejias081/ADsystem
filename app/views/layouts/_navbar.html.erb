@@ -14,9 +14,13 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="Buttonusers">
               <li><%= link_to 'Agregar empleado', new_user_path, class: "dropdown-item" %></li>
+              <hr class="dropdown-divider">
               <li><%= link_to "Editar datos",  edit_user_registration_path, class: "dropdown-item" %></li>
+              <hr class="dropdown-divider">
               <li><%= link_to "Iniciar Sesión",  new_user_session_path, class: "dropdown-item" %></li>
+              <hr class="dropdown-divider">
               <li><%= link_to "Lista de empleados",  users_path, class: "dropdown-item" %></li>
+              <hr class="dropdown-divider">
               <li><%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </div>
@@ -42,6 +46,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="Buttonnotes">
             <li><%= link_to 'Crear Nota', new_note_path, class: "dropdown-item" %></li>
+            <hr class="dropdown-divider">
             <li><%= link_to 'Notas', notes_path, class: "dropdown-item" %></li>
           </ul>
         </div>
@@ -52,6 +57,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="Buttonclients">
             <li><%= link_to 'Crear Cli. / Prov.', new_entity_path, class: "dropdown-item" %></li>
+            <hr class="dropdown-divider">
             <li><%= link_to 'Clientes / Proveedores', entities_path, class: "dropdown-item" %></li>
           </ul>
         </div>
