@@ -3,7 +3,9 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy ]
 
   def index
+    @entities = Entity.all
     @notes = Note.all
+    
   end
 
   def show

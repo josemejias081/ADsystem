@@ -1,16 +1,36 @@
-<h1>Notas</h1>
- <p>Número de notas: <%= @notes.count %></p>
-<div class="row">
-  <% @notes.each do |note| %>
-    <div class="col-sm-3 mb-3">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title"><%= note.name %></h5>
-        </div>
-        <div class="card-footer d-grid gap-2">
-          <%= link_to 'Ver', note, class: "btn btn-info btn-block text-white" %>
-        </div>
-      </div>
+<div class="card mt-5">
+  <div class="card-header bg-primary">
+    <h1 class="card-title pt-2 text-white">Notas</h1>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Entidad</th>
+            <th>Tipo de nota</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @notes.each do |note| %>
+            <tr>
+              <td><%= note.name %></td>
+              <td><%= note.entity.name if note.entity %></td>
+              <td><%= note.transaction_type %></td>
+              <td><%= I18n.l(note.created_at, format: '%d/%m/%Y') %></td>
+              <td class="d-grid gap-2">
+                <%= link_to 'Ver', note, class: "btn btn-info btn-block text-white" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
+  </div>
+  <div class="card-footer">
+    <%= link_to '+ Agregar Nota', new_note_path, class: "btn btn-info btn-sm text-white fw-bold" %>
+  </div>
 </div>
+

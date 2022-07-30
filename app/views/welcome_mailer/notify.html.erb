@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Notificación</title>
+</head>
+	<body style="background-color: white; padding-top: 20px; ">
+		<table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
+			<tr>
+				<td style="background-color: #77bb55; text-align: center; padding: 0">		
+					<div>
+						<h4 style="font-family: sans-serif; color: #ffffff">Fuente Productiva C.A.<br>
+						Departamento Administrativo<br>
+						Sección de Contratación</h4>
+            <figure class="figure m-3" >
+							<%= image_tag(url_for("https://fuenteproductiva.com/wp-content/uploads/2021/09/Logo-fuente-productiva-c.png"), style:"width: 80px; height: 80px; border-radius:50px;") %>
+						</figure>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color: #f1f1f1">
+					<div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+						<h2 style="color: #59a64d; margin: 0 0 7px">Hola! <%= @user.name %></h2>
+						<p style="margin: 2px; font-size: 15px">
+							<h3>Notificación de creación de cuenta en Fuente Productiva C.A.</h3>
+								Hola! <%= @user.name %>, Fuente Productiva C.A, te da la bienvenida, desde este momento eres parte
+								de nuestro gran equipo de trabajo, ya puedes hacer uso de nuestro sistema administrarivo "ADsystem".
+						</p>
+            <p style="margin: 2px; font-size: 15px">
+							<h4>Política de la empresa:</h4>
+							<ul>
+								<li style="margin-bottom:2px;">Su pago se le efectuará <b>01 al 03, primeros días de cada mes.</b></li>
+								<li style="margin-bottom:2px;">Mantenga siempre <b>una buena actitud dentro de la empresa.</b></li>
+								<li style="margin-bottom:2px;">Recuerde que aunque use este sistema, su puesto de trabajo debe permanecer ordenado.</li>
+                <li style="margin-bottom:2px;">Ante cualquier duda dirijase a su companero de equipo de más alto rango.</li>
+                <li style="margin-bottom:2px;">Por último y no menos importante, "Somos un Equipo".</li>
+							</ul>
+						</p>
+						<p>Para cambiar tu contraseña haz clic en el botón de abajo.</p>
+							<h4>Juntos podemos alcanzar grandes metas..!</h4>
+              <h5 style="color: #77bb55">Una nueva experiencia laboral!</h5>
+							<br>
+							<br>
+						<div style="width: 100%; text-align: center">
+							<%= link_to "Acceder",  new_password_url("user"), style:"text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" %>
+						</div>
+						<br>
+						<hr>
+						<p style="color: gray; font-size: 12px; text-align: center;margin: 30px 0 0">
+								Fuente Productiva C.A.<br>
+								Departamento Administrativo<br>
+								Teléfono: (+00)5465453
+						</p>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html> 

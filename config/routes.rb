@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "home#welcome"
-  resources :users
+  
+  resources :users do
+    get "reset_password"
+  end
   resources :warehouse_details
   resources :warehouse_records
   resources :categories
