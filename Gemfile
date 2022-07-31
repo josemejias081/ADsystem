@@ -73,6 +73,10 @@ group :test do
   gem "webdrivers"
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
 
 gem 'devise'
