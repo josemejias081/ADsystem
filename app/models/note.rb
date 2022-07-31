@@ -1,4 +1,7 @@
 class Note < ApplicationRecord
+  validates :name, presence: true
+  validates :transaction_type, presence: true
+
   belongs_to :entity, :optional => true
   has_many :note_products, dependent: :destroy
   has_many :products, through: :note_products
