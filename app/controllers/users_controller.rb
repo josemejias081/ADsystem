@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      WelcomeMailer.notify(@user).deliver_now!
+      WelcomeMailer.with(user: @user).notify.deliver_now!
         flash[:success] = "Usuario creado exitosamente!"
       redirect_to users_path
     else
