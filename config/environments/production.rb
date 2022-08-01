@@ -95,16 +95,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'https://adsystem-beta.herokuapp.com/'}
-  #config.action_mailer.asset_host = 'https://adsystem-beta.herokuapp.com/'
+  config.action_mailer.asset_host = 'https://adsystem-beta.herokuapp.com/'
 
 
-  # SMTP settings for gmail
-  #config.action_mailer.smtp_settings = {
-   # :address              => "smtp.gmail.com",
-    #:port                 => 587,
-    #:user_name            => ENV["EMAIL_USERNAME"],
-    #:password             => ENV["EMAIL_PASSWORD"],
-    #:authentication       => "plain",
-    #:enable_starttls_auto => true
-  #}
+SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV["EMAIL_USERNAME"],
+    :password             => ENV["EMAIL_PASSWORD"],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end
