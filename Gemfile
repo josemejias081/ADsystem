@@ -89,3 +89,5 @@ gem 'active_storage_validations'
 gem 'counter_culture', '~> 2.0'
 
 gem "cloudinary", "~> 1.23"
+
+gem "net-http"
