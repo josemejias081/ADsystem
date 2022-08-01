@@ -1,6 +1,6 @@
 class WelcomeMailer < ApplicationMailer
-  def notify
-    @user = params[:user]
-    mail(to: <EMAIL_USERNAME>, subject: "Bienvenido(a)")
+  def notify(user)
+    @user = user
+    mail to: user.email, subject: "Bienvenido(a)"
   end
 end
