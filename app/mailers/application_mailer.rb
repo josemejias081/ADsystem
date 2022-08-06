@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "info.sportplusapp@gmail.com"
+  default from: "info@directorio247.com"
   layout "mailer"
 end
