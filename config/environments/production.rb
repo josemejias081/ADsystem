@@ -98,7 +98,7 @@ Rails.application.configure do
   config.action_mailer.asset_host = 'https://adsystem-beta.herokuapp.com/'
 
 
-SMTP settings for gmail
+  #SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
