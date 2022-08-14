@@ -2,7 +2,7 @@
   <section class="text-center text-mute">
     <div class="mt-5">
       <main class="px-3">
-        <h2>Hola <%= current_user.name %>! (<%= current_user.role %>)</h2>
+        <h2>Hola <%= current_user.name %>!</h2>
         <p class="lead">Te has autenticado correctamente, ahora estas listo para interactuar con esta aplicación!</p>
         <% unless current_user.Empleado? %>
           <p class="lead">Recuerda leer los datos introducidos antes de hacer cualquier registro, así te evitas trabajar más!</p>
