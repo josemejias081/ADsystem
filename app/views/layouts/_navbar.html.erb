@@ -1,68 +1,69 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">ADsystem</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-  <% if user_signed_in? %>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <% unless current_user.Empleado? %>
-          <div class="dropdown m-2">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonusers" data-bs-toggle="dropdown" aria-expanded="false">
-              Usuarios
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="Buttonusers">
-              <li><%= link_to 'Agregar empleado', new_user_path, class: "dropdown-item" %></li>
-              <hr class="dropdown-divider">
-              <li><%= link_to "Editar datos",  edit_user_registration_path, class: "dropdown-item" %></li>
-              <hr class="dropdown-divider">
-              <li><%= link_to "Iniciar Sesión",  new_user_session_path, class: "dropdown-item" %></li>
-              <hr class="dropdown-divider">
-              <li><%= link_to "Lista de empleados",  users_path, class: "dropdown-item" %></li>
-              <hr class="dropdown-divider">
-              <li><%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-            </ul>
+    <% if user_signed_in? %>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header bg-primary text-white">
+          <img class="rounded-circle" src="https://i0.wp.com/sonria.com/wp-content/uploads/2016/08/2165947w620.jpg?fit=620%2C348&ssl=1" alt="" width="50" height="50">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><%= current_user.name %></h5>
+          <button type="button" class="btn-close border border-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <% unless current_user.Empleado? %>
+          <div class=" m-2">
+            <h5 class="bg-info text-white px-2">Usuarios</h5>
+            <div class="item">
+              <i class='bx bxs-user'></i> <%= link_to 'Agregar empleado', new_user_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+            <div class="item">
+              <i class='bx bx-edit-alt'></i> <%= link_to 'Editar datos', edit_user_registration_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+            <div class="item">
+              <i class='bx bxs-group'></i> <%= link_to 'Nómina', users_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
           </div>
-        <% end %>
-        <div class="dropdown m-2">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonproducts" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Buttonproducts">
-            <li><%= link_to 'Crear Categoría', new_category_path, class: "dropdown-item" %></li>
-            <hr class="dropdown-divider">
-            <li><%= link_to 'Categorías', categories_path, class: "dropdown-item" %></li>
-            <hr class="dropdown-divider">
-            <li><%= link_to 'Agregar Producto', new_product_path, class: "dropdown-item" %></li>
-            <hr class="dropdown-divider">
-            <li><%= link_to 'Almacen', products_path, class: "dropdown-item" %></li>
-          </ul>
+          <% end %>
+          <div class="m-2">
+              <h5 class="bg-info text-white px-2">Productos</h5>
+            <div class="item">
+            <i class='bx bxs-book-add'></i> <%= link_to 'Crear Categoría', new_category_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+            <div class="item">
+              <i class='bx bxs-book-content'></i> <%= link_to 'Categorías', categories_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+            <div class="item">
+              <i class='bx bxs-plus-square'></i> <%= link_to 'Agregar Producto', new_product_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+            <div class="item">
+              <i class='bx bxs-store-alt'></i> <%= link_to 'Almacen', products_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+          </div>
+          <div class="m-2">
+              <h5 class="bg-info text-white px-2">Entradas y Salidas</h5>
+            <div class="item">
+              <i class='bx bxs-select-multiple'></i> <%= link_to 'Notas', notes_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+          </div>
+          <div class="m-2">
+              <h5 class="bg-info text-white px-2">Clientes y Proveedores</h5>
+            <div class="item">
+              <i class='bx bxs-contact'></i> <%= link_to 'Clientes / Proveedores', entities_path, class: "text-decoration-none" %>
+            </div>
+              <hr class="divider">
+          </div>
         </div>
-
-        <div class="dropdown m-2">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonnotes" data-bs-toggle="dropdown" aria-expanded="false">
-            Notas
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Buttonnotes">
-            <li><%= link_to 'Crear Nota', new_note_path, class: "dropdown-item" %></li>
-            <hr class="dropdown-divider">
-            <li><%= link_to 'Notas', notes_path, class: "dropdown-item" %></li>
-          </ul>
-        </div>
-
-        <div class="dropdown m-2">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="Buttonclients" data-bs-toggle="dropdown" aria-expanded="false">
-            Clientes / Proveedores
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Buttonclients">
-            <li><%= link_to 'Crear Cli. / Prov.', new_entity_path, class: "dropdown-item" %></li>
-            <hr class="dropdown-divider">
-            <li><%= link_to 'Clientes / Proveedores', entities_path, class: "dropdown-item" %></li>
-          </ul>
-        </div>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
   </div>
 </nav>
