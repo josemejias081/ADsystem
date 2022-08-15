@@ -9,9 +9,12 @@ class Ability
       elsif user.Administrador?
         can :manage, :all
       else user.Empleado?
-        cannot :manage, User
-        can :read, :all 
-        cannot [:create, :update, :destroy], :all
+        can :read, User, id: user.id
+        can :update, User, id: user.id
+        can :reset_password, User, id: user.id
+        can :read, Product
+        can :read, Note 
+        can :read, Category
       end
     # Define abilities for the user here. For example:
     #
