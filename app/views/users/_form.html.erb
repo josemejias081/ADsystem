@@ -1,7 +1,20 @@
 <section class=" row justify-content-center">
   <div class="col-md-8 p-4 p-md-5 mt-5 border rounded-3 bg-light">
-  <h2>Registrarse</h2>
     <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group mb-4">
+        <%= f.label :Foto, style: "display: block" %>
+        <%= f.file_field :photo, class: 'form-control attachments', placeholder: '' %>
+      </div>
       <div class="form-group mb-4">
         <%= f.text_field :name, autofocus: true, placeholder: "Nombre y Apellido",class: 'form-control' %>
       </div>
@@ -10,10 +23,12 @@
         <%= f.email_field :email, autofocus: true, placeholder: "Correo Electrónico", autocomplete: "email",class: 'form-control' %>
       </div>
 
-      <div class="form-group mb-4 ">
-        <%= f.select( :role, User.roles.keys, {class: "form-control "}) %>
-      </div>
-
+      <% unless current_user.Empleado? %>
+        <div class="form-group mb-4 ">
+          <%= f.select( :role, User.roles.keys, {class: "form-control "}) %>
+        </div>
+      <% end %>
+      
       <div class="form-group mb-4">
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "Contraseña (6 Caracteres mínimos)", class: 'form-control' %>
       </div>
