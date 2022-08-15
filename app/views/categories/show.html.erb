@@ -1,14 +1,20 @@
-<h1>Nueva categoría</h1>
-<section class="row justify-content-center">
-  <div class="col-auto mt-5">
-    <div class="card" style="width: 27rem;">
-      <div class="card-header bg-primary">
-        <h5 class="card-title text-white pt-2"><%= @category.name %></h5>
-      </div>
+<section class="row">
+  <div class="col-sm-12">
+    <div class="card">
       <div class="card-body">
-        <p><%= @category.description %></p>
+        <div class="card-header bg-primary">
+          <h5 class="card-title text-white">Categoría: <%= @category.name %></h5>
+        </div>
+        <div class="panel-body well" >
+            <h5 class="card-title p-3">Productos:</h5>
+            <ul>
+              <% @category.products.each do |product|%>
+                <li><%= product.name %></li>
+              <% end %>
+            </ul>
+          </div>
       </div>
-      <div class= "card-footer text-center">
+      <div class="card-footer text-center">
         <%= link_to 'Crear categoría', new_category_path, class: "btn btn-sm btn-success" %>
         <%= link_to 'Volver', categories_path, class: "btn btn-sm btn-primary" %>
         <%= link_to 'Editar', edit_category_path(@category), class: "btn btn-sm btn-warning" %>
