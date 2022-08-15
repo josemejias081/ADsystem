@@ -21,3 +21,9 @@
 .item, .text-decoration-none {
   color: #0d6efd;
 }
+
+.bx {
+  border: solid 2px #0d6efd;
+  border-radius: 50px;
+  padding: 3px;
+}
