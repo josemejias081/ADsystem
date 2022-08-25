@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-body">
-    <%= form_with model: @category do |f| %>
+    <%= form_for @category do |f| %>
       <% if @category.errors.any? %>
-        <div id="error_explanation">
-          <h3><%= pluralize(category.errors.count, "error") %> prohibio que este usuario se guardara:</h3>
+        <div style="color: red">
+          <h3><%= pluralize(@category.errors.count, "error") %> prohibio que este usuario se guardara:</h3>
           <ul>
-            <% category.errors.each do |error| %>
+            <% @category.errors.each do |error| %>
               <li><%= error.full_message %></li>
             <% end %>
           </ul>
