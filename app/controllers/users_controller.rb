@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         flash[:success] = "Usuario creado exitosamente!"
       redirect_to users_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
