@@ -17,31 +17,46 @@
   </div>
 
   <div class="row border border-top-0 border-primary">
-    <div class="col-md-6 form-group my-3">
-      <h5>Tipo de nota:</h5><%= f.select( :transaction_type, Note.transaction_types.keys, {class: "form-control select-product nput-group-btn"}) %>
-    </div>
-
-    <div class="col-md-6 form-group my-3">
-      <h5>Seleccione Cliente / Proveedor:</h5><%= f.collection_select(:entity_id, @entities, :id, :name, {}, {class: "form-control select-product nput-group-btn"}) %>
-    </div>
-  </div>
-  <h3>Campos</h3>
-  <div id='add'class="row mb-3 border border-info" >
-    <div class="col-md-6">Seleccione Producto</div>
-    <div class="col-md-3">Cantidad</div>
-    <div class="col-md-1">Acciones</div>
-    <%= f.fields_for :note_products do |notes_product| %>
-      <%= render 'add_fields', form: notes_product %>
-    <% end %>
+    <table class="table table-borderless">
+      <thead>
+        <tr class="bg-info text-white">
+          <th scope="col-3">Tipo de nota:</th>
+          <th scope="col-9">Seleccione Cliente / Proveedor:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.select( :transaction_type, Note.transaction_types.keys, {class: "form-control"}) %></td>
+          <td><%= f.collection_select(:entity_id, @entities, :id, :name, {}, {class: "form-control"}) %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class=" form-actions mb-3 btn btn-primary btn-xs btn-block">
+  <h3 class="my-2">Campos</h3>
+  <table id='add' class="table table-borderless">
+    <thead>
+      <tr id='table' class="bg-primary text-white">
+        <th class="w-50">Seleccione Producto</th>
+        <th class="w-20">Cantidad</th>
+        <th class="w-20">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :note_products do |notes_product| %>
+        <%= render 'add_fields', form: notes_product %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions mb-3 btn btn-primary btn-xs">
     <%= link_to_add_nested(f, :note_products, '#add', tag: 'span', partial: 'add_fields') do %>
       <span><span class= "" >Agregar Campo</span></span>
     <% end %>
   </div>
-
+  
   <div class="actions">
     <%= f.submit "Guardar", class:"btn btn-sm btn-success mt-3"%>
   </div>
 <% end %>
+
