@@ -29,7 +29,7 @@ class EntitiesController < ApplicationController
     if @entity.update(entity_params)
       redirect_to @entity, notice: "Entity was successfully updated."
     else
-      render "edit"
+      render "edit", status: :unprocessable_entity
     end
   end
 

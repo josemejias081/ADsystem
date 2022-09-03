@@ -42,7 +42,7 @@ class NotesController < ApplicationController
     if @note.update(note_params)
       redirect_to @note, notice: "Note was successfully updated"
     else
-      render "edit"
+      render "edit", status: :unprocessable_entity
     end
   end
 

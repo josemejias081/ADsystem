@@ -30,7 +30,7 @@ class CategoriesController <ApplicationController
     if @category.update(category_params)
       redirect_to @category
     else
-      render "edit"
+      render "edit", status: :unprocessable_entity
     end
   end
 

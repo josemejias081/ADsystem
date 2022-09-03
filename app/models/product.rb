@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   validates :name, presence: true
-  validates :photo, presence: true
+  #validates :photo, presence: true
   validates :description, presence: true
   validates :stock, presence: true
   validates :price, presence: true
