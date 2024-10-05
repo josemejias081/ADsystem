@@ -24,20 +24,24 @@
       </div>
 
       <div class="row">
-        <div class=" col-md-6 form-group">
-          <%= f.label :Descripción, style: "display: block" %>
-          <%= f.text_field :description,class: 'form-control' %>
+        <div class=" col-md-4 form-group"> 
+          <%= f.label :Costo, style: "display: block" %>
+          <%= f.text_field :cost,class: 'form-control' %>
         </div>
-        <div class=" col-md-6 form-group">
+        <div class=" col-md-4 form-group">
           <%= f.label :Existencia, style: "display: block" %>
           <%= f.number_field :stock,class: 'form-control' %>
+        </div>
+        <div class=" col-md-4 form-group"> 
+          <%= f.label :Precio_de_venta, style: "display: block" %>
+          <%= f.text_field :price,class: 'form-control' %>
         </div>
       </div>
 
       <div class="row">
-        <div class=" col-md-6 form-group"> 
-          <%= f.label :Precio, style: "display: block" %>
-          <%= f.text_field :price,class: 'form-control' %>
+        <div class=" col-md-6 form-group">
+          <%= f.label :Descripción, style: "display: block" %>
+          <%= f.text_field :description,class: 'form-control' %>
         </div>
         <div class="col-md-6 form-group">
           <label>Categorías</label><br>
