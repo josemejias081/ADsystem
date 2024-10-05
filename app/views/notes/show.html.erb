@@ -58,9 +58,9 @@
             <td><%= note_product.product.description %></td>
             <td><%= note_product.quantity.abs %></td>
             <% if @note.entity.client? %>
-              <td>25</td>
-            <% elsif @note.entity.supplier? %>
               <td><%= note_product.product.price %></td>
+            <% elsif @note.entity.supplier? %>
+              <td><%= note_product.product.cost %></td>
             <% end %>
           </tr>
         <% end %>
