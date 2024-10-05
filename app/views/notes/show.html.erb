@@ -1,49 +1,104 @@
 <h1>Nueva Nota</h1>
-<div class="card">
-  <div class="card-header">
-    <h2 class="bg-primary px-2 text-white"><%= @note.name %></h2>
-    <div class="bg-info" >
-      <p class="card-title px-2"><span class="fw-bold">Nombre de la empresa:</span> <%= @note.entity.name %></p>
-      <p class="card-title px-2"><span class="fw-bold">Dirección:</span> <%= @note.entity.address %></p>
-      <p class="card-title px-2"><span class="fw-bold">Teléfono:</span> <%= @note.entity.phone %></p>
-      <% if @note.entity.client? %>
-        <p class="card-title px-2"><span class="fw-bold">Estatus:</span> Cliente</p>
-      <% elsif @note.entity.supplier? %>
-        <p class="card-title px-2"><span class="fw-bold">Estatus:</span> Proveedor</p>
-      <% end %>
+<div class="invoice">
+  <header class="invoice-header">
+    <div class="hero-background"></div>
+  </header>
+  <div class="invoice-content">
+    <div class="row">
+      <div class="col-left"></div>
+      <div class="header-content">
+        <div class="logo">
+          <%= link_to image_tag("/logo.png"), root_path  %>
+          <h2>Adsystem</h2>
+        </div>
+      </div>
     </div>
-    <div class="bg-info" > 
-      <p class="card-title px-2 py-1 text-white"><span class="fw-bold">Fecha:</span> <%= I18n.l(@note.created_at, format: '%d/%m/%Y') %></p>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
+    <section class="datos-cliente">
+      <h3>
+        <% if @note.entity.client? %>
+          DATOS DEL CLIENTE
+        <% elsif @note.entity.supplier? %>
+          DATOS DEL PROVEEDOR
+        <% end %>
+      
+      </h3>
+      <ul class="client">
+        <li><strong>Empresa:</strong> <%= @note.entity.name %></li>
+        <li><strong>Dirección:</strong> <%= @note.entity.address %></li>
+        <li><strong>Mail:</strong> <%= @note.entity.email %></li>
+        <li><strong>Teléfono:</strong> <%= @note.entity.phone %></li>
+        <% if @note.entity.client? %>
+          <li><strong>Estatus:</strong> Cliente</li>
+        <% elsif @note.entity.supplier? %>
+          <li><strong>Estatus:</strong> Proveedor</li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="date-number">
+      <p><strong>Número:</strong> 00<%= @note.id %></p>
+      <p><strong>Fecha:</strong> <%= I18n.l(@note.created_at, format: '%d/%m/%Y') %></p>
+    </section>
+    <table class="table">
+      <thead>
           <tr>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Cantidad</th>
+            <% if @note.entity.client? %>
+              <th>Precio</th>
+            <% elsif @note.entity.supplier? %>
+              <th>Costo</th>
+            <% end %>
           </tr>
-        </thead>
-        <tbody>
-          <% @note.note_products.each do |note_product|%>
-            <tr>
-              <td><%= note_product.product.name %></td>
-              <td><%= note_product.product.description %></td>
-              <td><%= note_product.quantity.abs %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      </thead>
+      <tbody>
+        <% @note.note_products.each do |note_product|%>
+          <tr>
+            <td><%= note_product.product.name %></td>
+            <td><%= note_product.product.description %></td>
+            <td><%= note_product.quantity.abs %></td>
+            <% if @note.entity.client? %>
+              <td>25</td>
+            <% elsif @note.entity.supplier? %>
+              <td><%= note_product.product.price %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="summary">
+      <p><strong>Forma de pago:</strong> Transferencia</p>
+      <p><strong>Nota:</strong> El servicio tiene una validez de una semana</p>
     </div>
-    <div class="card-footer">
-      <div class="card-body">
-        <%= link_to "Crear nueva nota", new_note_path, class: "card-link" %>
-        <%= link_to "Editar", edit_note_path(@note), class: "card-link" %>
-        <%= link_to "Volver", notes_path, class: "card-link" %>
-        <%= link_to "Eliminar", @note, data: {turbo_method: :delete}, class: "card-link" %>
+    <section class="totals">
+      <ul class="total">
+        <li><strong>Subtotal:</strong>500 €</li>
+        <li><strong>IVA 21%:</strong>105 €</li>
+        <li><strong>Total:</strong>500 €</li>
+      </ul>
+    </section>
+    <hr class="line">
+    <footer class="invoice-footer">
+      <div class="firma">
+        <ul class="bussiness-info">
+          <li>ADsystem</li>
+          <li>Calle System, Directo al sitio</li>
+          <li>adsystem@adsystem.com</li>
+          <li>Teléfono: 000-000-000</li>
+        </ul>
+        <div class="signature">
+            <hr class="line">
+            <p>Firma y Sello</p>
+        </div> 
       </div>
-    </div>
+    </footer>
   </div>
+    <div class="footer-background"></div> 
+</div>
+
+<div class="">
+  <%= link_to "Crear nueva nota", new_note_path, class: "card-link" %>
+  <%= link_to "Editar", edit_note_path(@note), class: "card-link" %>
+  <%= link_to "Volver", notes_path, class: "card-link" %>
+  <%= link_to "Eliminar", @note, data: {turbo_method: :delete}, class: "card-link" %>
 </div>
