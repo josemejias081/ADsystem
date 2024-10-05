@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_05_175505) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_05_183201) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_05_175505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "cost"
+    t.decimal "markup_percentage", default: "30.0"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

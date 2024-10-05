@@ -17,6 +17,10 @@ class Product < ApplicationRecord
   validates :photo, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validate :photo_validation
 
+  def sale_price
+    cost + (cost * (markup_percentage / 100))
+  end
+
   def photo_validation
     if photo.attached?
       if photo.byte_size > 5.megabyte
