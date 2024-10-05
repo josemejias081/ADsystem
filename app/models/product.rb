@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :stock, presence: true
   validates :price, presence: true
+  validates :cost, presence: true
   belongs_to :category
 
   has_and_belongs_to_many :notes, dependent: :destroy
