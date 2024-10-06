@@ -24,7 +24,17 @@
             <td><%= user.email %></td>
             <td><%= user.role %></td>
             <td><%= I18n.l(user.created_at, format: '%d/%m/%Y') %></td>
-            <td class="d-grid gap-2"><%= link_to 'Ver', user, class: "btn btn-info btn-block text-white" %></td>
+            <td class="users-avatar">
+              <% if user.photo.attached? %>
+                <%= link_to user do %>
+                  <%= image_tag user.photo, size: "80x80", class: "img avatar" %>
+                <% end %>
+              <% else %>
+                <%= link_to user do %>
+                  <img src="/profile-pic.png" alt="Avatar" width="80" height="80" class="avatar">
+                <% end %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
