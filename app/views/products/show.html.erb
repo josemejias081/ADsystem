@@ -1,29 +1,29 @@
 <section class="row justify-content-center">
-  <div class="col-auto mt-5">
-    <div class="card">      
-      <div class="card-header text-center">
-        <% if @product.photo.attached? %>
-          <%= image_tag @product.photo, size: "250x200", class:"rounded" %>
-        <% else %>
-          <img src="https://www.yeaah.co/wp-content/uploads/2021/08/producto-sin-imagen.jpg" alt="" width="250" height="200">
-        <% end %>
-        <h5 class="card-title"><%= @product.name %></h5>
-      </div>
-      <div class="card-body">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Descripción: <%= @product.description %></li>
-          <li class="list-group-item">Existencia: <%= @product.stock %></li>
-          <li class="list-group-item">Costo: <%= number_to_currency(@product.cost) %></li>
-          <li class="list-group-item">Porcentaje de ganacia: <%= @product.markup_percentage %>%</li>
-          <li class="list-group-item">Precio de Venta: <%= number_to_currency(@product.sale_price) %></li>
-          <li class="list-group-item">Categoría: <%= @product.category.name %></li>
-        </ul>
-      </div>
-      <div class="card-footer text-center">
-        <%= link_to "Editar", edit_product_path(@product), class: "card-link" %>
-        <%= link_to "Volver", products_path, class: "card-link" %>
-        <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "card-link" %>
-      </div>
+  <div class="tarjeta">
+    <div class="tarjeta-hero">
+      <% if @product.photo.attached? %>
+        <%= image_tag @product.photo, size: "250x200", class:"img" %>
+      <% else %>
+        <img src="https://www.yeaah.co/wp-content/uploads/2021/08/producto-sin-imagen.jpg" alt="" width="250" height="200">
+      <% end %>
+    </div>
+    <hr>
+    <div>
+      <h5 class="tarjeta-title color-tarjeta-title"><%= @product.name %></h5>
+      <ul>
+        <li><strong>Descripción:</strong> <%= @product.description %></li><hr>
+        <li><strong>Existencia:</strong> <%= @product.stock %></li><hr>
+        <li><strong>Costo:</strong> <%= number_to_currency(@product.cost) %></li><hr>
+        <li><strong>Porcentaje de ganacia:</strong> <%= @product.markup_percentage %>%</li><hr>
+        <li><strong>Precio de Venta:</strong> <%= number_to_currency(@product.sale_price) %></li><hr>
+        <li><strong>Categoría:</strong> <%= @product.category.name %></li>
+      </ul>
+    </div>
+    <hr>
+    <div class="card-footer text-center">
+      <%= link_to "Editar", edit_product_path(@product), class: "btn-tarjeta" %>
+      <%= link_to "Volver", products_path, class: "btn-tarjeta" %>
+      <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "btn-tarjeta" %>
     </div>
   </div>
 </section>

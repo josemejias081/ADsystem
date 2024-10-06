@@ -30,7 +30,63 @@
   margin: 3px;
   color: #fff;
 }
+/*Producto*/
 
+.tarjeta{
+  color: #333;
+  padding: 10px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin: 0 auto; 
+  width: 33.33%;
+}
+
+.tarjeta-hero {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.tarjeta-hero-bg {
+  background-color: #1c74fc;
+}
+
+.avatar {
+  border-radius: 50%;
+  border: solid 2px #333;
+}
+
+.tarjeta-title{
+  font-weight: 700;
+  font-size: 21px;
+  color: #3182CE;
+  text-align: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+@media (max-width: 1070px){
+  .tarjeta {
+    width: 48%;
+    margin-bottom: 20px;
+  }
+ }
+
+ @media (max-width: 600px){
+  .tarjeta {
+  width: 70%;
+  margin-bottom: 20px;
+  }
+ 
+ }
+
+/*Factura*/
 .invoice {
   max-width: 800px;
   margin: 50px auto;

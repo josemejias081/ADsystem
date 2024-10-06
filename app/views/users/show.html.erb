@@ -1,26 +1,26 @@
-<h1>Nuevo Empleado</h1>
-<section class="row align-item-center justify-content-center">
-  <p style="color: green"><%= notice %></p>
-  <div class="card" style="width: 36rem;">
-    <div class="card-header text-center">
+<section>
+  <div class="tarjeta">
+    <div class="tarjeta-hero tarjeta-hero-bg">
       <% if @user.photo.attached? %>
-        <%= image_tag @user.photo, size: "250x250", class:"rounded" %>
+        <%= image_tag @user.photo, size: "200x200", class:"img avatar" %>
       <% else %>
-        <img class="img-thumbnail" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPDxIOEBAODw8PEBAPEhAODQ8NEQ8PFREWFhURFRMYHSggGBolGxMTITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAaAAEBAQEBAQEAAAAAAAAAAAAABQQBAwIH/8QANRABAAEBBAcHAwIHAQAAAAAAAAECAwQRIQUSMUFRYXEigZGhscHRMjPhQvBScoKSorLxI//EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD9RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB52ttTTtmI5b/AAB6Cfa6Qn9MYc5z8mWu2qq21TPfl4AszJihALwhRMxsmY6S9aLzXGyqe+cfUFgYLG/7q474+G6J3g6AAAAAAAAAAAAAAAAAADBpC3/RH9XwDl5vu6j+74YpkAAAAAAAGuwvurTFOrjhv1sN/RkAb40jxo/yx9myztIqjWjZKI1XC21atWdlXlO4FMAAAAAAAAAAAAAAAHKpwjHhGKJXVjMzO2ZxVr5OFnV0w8ZwSAAAAAAAAAAAAAWbCvWpirjHnvejLo2rsYcKp9pagAAAAAAAAAAAAAAZ7/8AbnrHqlKmkPtz1j1SwAAAAAAAAAAAAb9FzlVHOJ9fhuT9GTnV0hQAAAAAAAAAAAAAABnv8f8AnPWPVKWbejWpmnjHnuRgAAAAAAAAAAAAbNGfVV0j1UWLRlOVU8ZiPD/raAAAAAAAAAAAAAAD4tbSKYxmcISrzMTXM05xOfy2aT+mP5vZOABwHQAAAAAB3049z5B12iiapwjOZccBbsbPUpinh5y+2e41TNnGO7GGgAAAAAAAAAAAAAAGbSFONGPCYn290tbtKNaJp4xMIkwA+f35PpwAAByPy6AfgAHPnB397gAMR2inGYjfMxHiCtcqcLOnnn4zi93IjDLhk6AAAAAAAAAAAAAAAk36jVrnnnHft88VYBCHpeacK6o5zPdObzAAAAAAAAAe9yoxtI5Zz3PGiMZiOMxC4AAAAAAAAAAAAAAAAAADDpKyyiuN2U9NzAt104xMTsmMEWqnCZidsTgDgAAAAAAANWj7LGrW3U+qm8bpZ6tERvnOesvYAAAAAAAAAAAAAAAAAABKv9OFpPOIn29lVM0jPb6Ux7gygAAAAAERjkPqy+qOseoLYAAAAAAAAAAAAAAAAAAACPeqsa6p54eGXsoXm9RRGETjVw4dUoAAAAAAAicM+AAuROMYxsnN1Pud7iI1atm6eHKVCJAAAAAAAAAAAAAAAGa2vtNOztTy2eLBbXiqvbOXCMoBvtr7TTlHanls8WK1vddW/COFOXm8AAAAAAAAAAAB92VtVT9MzHLbHg+AG6z0h/FT30/DVZXiirZMY8JylHcBeEeyvNdOycY4TnDbY3+mcquzPHbANY5E45xnHJ0AAAAAGG9X3Ds0bd9XwD3vF6poy21cI9062vFVe2cuEZQ8gAAAAAAAAAAAAAAAAAAAAHpY21VGye7dPc3WF+pnKrsz5fhNAXRJu15mjnTw+FWiqJiJjZOYOgA+bX6Z6T6IboAAAAAAAAAAAAAAAAAAAAAAAAAq3D7dPf8A7SANAAP/2Q==" alt="" width="50" height="50">
+        <img src="/profile-pic.png" alt="Avatar" width="250" height="250" class="avatar">
       <% end %>
-      <h5 class="card-title"><%= @user.name %></h5>
     </div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Correo Electrónico: <%= @user.email %></li>
-        <li class="list-group-item">Rol: <%= @user.role %></li>
-        <li class="list-group-item">Fecha de registro: <%= I18n.l(@user.created_at, format: '%d/%m/%Y') %></li>
+    <hr>
+    <div>
+      <h5 class="tarjeta-title color-tarjeta-title"><%= @user.name %></h5>
+      <ul>
+        <li><strong>Correo:</strong> <%= @user.email %></li><hr>
+        <li><strong>Rol:</strong> <%= @user.role %></li><hr>
+        <li><strong>Registrado el:</strong> <%= I18n.l(@user.created_at, format: '%d/%m/%Y') %></li>
       </ul>
     </div>
-    <div class="card-footer">
-      <%= link_to "Editar", edit_user_path(@user), class: "card-link" %>
-      <%= link_to "Volver", users_path, class: "card-link" %>
-      <%= link_to "Eliminar", @user, data: {turbo_method: :delete}, class: "card-link" %>
+    <hr>
+    <div class="card-footer text-center">
+      <%= link_to "Editar", edit_user_path(@user), class: "btn-tarjeta" %>
+      <%= link_to "Volver", users_path, class: "btn-tarjeta" %>
+      <%= link_to "Eliminar", @user, data: {turbo_method: :delete}, class: "btn-tarjeta" %>
     </div>
   </div>
 </section>
