@@ -38,8 +38,16 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_path, status: :see_other, notice: "Product was successfully destroyed." 
+    if NoteProduct.exists?(product_id: @product.id)
+      # Si existen, muestra un mensaje de error
+      flash[:alert] = "No se puede eliminar el producto porque está relacionado con notas."
+      redirect_to products_path
+    else
+      # Si no existen, procede a eliminar el producto
+      @product.destroy
+      flash[:notice] = "Producto eliminado correctamente."
+      redirect_to products_path
+    end
   end
 
   def delete_photos_attachment    

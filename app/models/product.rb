@@ -1,16 +1,16 @@
 class Product < ApplicationRecord
   validates :name, presence: true
-  #validates :photo, presence: true
+  validates :photo, presence: true
   validates :description, presence: true
   validates :stock, presence: true
   validates :price, presence: true
   validates :cost, presence: true
   belongs_to :category
 
-  has_and_belongs_to_many :notes, dependent: :destroy
+  has_and_belongs_to_many :notes, through: :note_products
   has_many :warehouse_details, dependent: :destroy
   
-  has_many :note_products
+  has_many :note_products, dependent: :destroy
   accepts_nested_attributes_for :note_products, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :photo
