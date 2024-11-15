@@ -18,9 +18,13 @@
   margin-top: 100px;
  }
 
+ .item {
+  border-radius: 6PX;
+ }
+
  .item:hover {
   background: #0d6efd !important;
-  border-radius: 10px;
+  
 } 
 
 .bx {
