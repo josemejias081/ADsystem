@@ -27,8 +27,10 @@
               <% elsif entity.supplier? %>
                 <td>Proveedor</td>
               <% end %>
-              <td class="d-grid gap-2">
-                <%= link_to 'Ver', entity, class: "btn btn-info btn-block text-white" %>
+              <td class="d-grid gap-2 justify-content-center">
+                <%= link_to  entity do %>
+                  <i class='bx bxs-show bxs ver'></i>
+                <% end%>
               </td>
             </tr>
           <% end %>
