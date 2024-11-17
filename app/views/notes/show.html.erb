@@ -43,6 +43,7 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Cantidad</th>
+            <th>Sub</th>
             <% if @note.entity.client? %>
               <th>Precio</th>
             <% elsif @note.entity.supplier? %>
@@ -71,7 +72,7 @@
     </div>
     <section class="totals">
       <ul class="total">
-        <li><strong>Subtotal:</strong>500 €</li>
+        <li><strong>Subtotal:</strong>500 € <%# @note.subtotal.abs %></li>
         <li><strong>IVA 21%:</strong>105 €</li>
         <li><strong>Total:</strong>500 €</li>
       </ul>
