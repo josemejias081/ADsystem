@@ -40,6 +40,7 @@
         <th class="w-50">Seleccione Producto</th>
         <th class="w-20">Cantidad</th>
         <th class="w-20">Acciones</th>
+        <div class="row border border-primary">
       </tr>
     </thead>
     <tbody>
@@ -48,15 +49,12 @@
       <% end %>
     </tbody>
   </table>
-
   <div class="form-actions mb-3 btn btn-primary btn-xs">
     <%= link_to_add_nested(f, :note_products, '#add', tag: 'span', partial: 'add_fields') do %>
       <span><span class= "" >Agregar Campo</span></span>
     <% end %>
   </div>
-  
   <div class="actions">
     <%= f.submit "Guardar", class:"btn btn-sm btn-success mt-3"%>
   </div>
 <% end %>
-

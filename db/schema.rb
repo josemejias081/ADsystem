@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_17_164057) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_17_183918) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,6 +79,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_17_164057) do
     t.datetime "updated_at", null: false
     t.integer "entity_id"
     t.integer "transaction_type", default: 0
+    t.decimal "unit_price"
+    t.decimal "iva_percentage", default: "21.0"
+    t.decimal "subtotal"
+    t.decimal "iva_amount"
+    t.decimal "total"
     t.index ["entity_id"], name: "index_notes_on_entity_id"
   end
 

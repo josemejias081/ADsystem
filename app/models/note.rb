@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   validates :name, presence: true
   validates :transaction_type, presence: true
-  validates :unit_price, :quantity, :iva_percentage, presence: true
+  validates :iva_percentage, presence: true
 
   belongs_to :entity, :optional => true
   has_many :note_products, dependent: :destroy
@@ -10,13 +10,21 @@ class Note < ApplicationRecord
 
   enum transaction_type: [:Compra, :Venta]
   after_initialize :set_default_transaction_type, :if => :new_record?
+  
 
-  before_validation :calculate_totals 
-  def calculate_totals 
-    self.subtotal = product.price * quantity 
-    self.iva_amount = subtotal * (iva_percentage / 100.0) 
-    self.total = subtotal + iva_amount 
-  end 
+  def subtotal
+    note_products.sum { |np| np.product.price * np.quantity.abs }
+  end
+
+  def tax
+    subtotal * (iva_percentage / 100.0) 
+  end
+
+  def total
+    subtotal
+  end
+
+  
   
 
   def set_default_transaction_type

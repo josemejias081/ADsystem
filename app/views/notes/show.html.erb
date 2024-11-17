@@ -43,7 +43,6 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Cantidad</th>
-            <th>Sub</th>
             <% if @note.entity.client? %>
               <th>Precio</th>
             <% elsif @note.entity.supplier? %>
@@ -58,9 +57,9 @@
             <td><%= note_product.product.description %></td>
             <td><%= note_product.quantity.abs %></td>
             <% if @note.entity.client? %>
-              <td><%= note_product.product.price %></td>
+              <td><%= number_to_currency(note_product.product.price) %></td>
             <% elsif @note.entity.supplier? %>
-              <td><%= note_product.product.cost %></td>
+              <td><%= number_to_currency(note_product.product.cost) %></td>
             <% end %>
           </tr>
         <% end %>
@@ -72,9 +71,9 @@
     </div>
     <section class="totals">
       <ul class="total">
-        <li><strong>Subtotal:</strong>500 € <%# @note.subtotal.abs %></li>
-        <li><strong>IVA 21%:</strong>105 €</li>
-        <li><strong>Total:</strong>500 €</li>
+        <li><strong>Subtotal:</strong> <%= number_to_currency(@note.subtotal) %></li>
+        <li><strong>IVA 21%:</strong> <%= number_to_currency(@note.tax) %></li>
+        <li><strong>Total:</strong> <%= number_to_currency(@note.total) %></li>
       </ul>
     </section>
     <hr class="line">
@@ -95,7 +94,6 @@
   </div>
     <div class="footer-background"></div> 
 </div>
-
 <div class="">
   <%= link_to "Crear nueva nota", new_note_path, class: "card-link" %>
   <%= link_to "Editar", edit_note_path(@note), class: "card-link" %>
