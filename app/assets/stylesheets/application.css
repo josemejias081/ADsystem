@@ -90,6 +90,11 @@ ul li {
  
  }
 
+ .entity {
+   display: flex;
+   justify-content: center;
+ }
+
  .users-avatar {
    display: flex;
    justify-content: center;
