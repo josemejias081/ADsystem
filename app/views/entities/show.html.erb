@@ -20,9 +20,15 @@
       <li class="list-group-item">Otro:</li>
     </ul>
     <div class="card-body entity">
-      <%= link_to "Editar", edit_entity_path(@entity), class: "card-link" %>
-      <%= link_to "Volver", entities_path, class: "card-link" %>
-      <%= link_to "Eliminar", @entity, data: {turbo_method: :delete},class: "card-link" %>
+      <%= link_to entities_path do %>
+        <i class='bx bx-arrow-back bxs card-link atras'></i>
+      <% end %>
+      <%= link_to edit_entity_path(@entity) do %>
+        <i class='bx bxs-message-edit bxs editar'></i>
+      <% end %>
+      <%= link_to @entity, data: {turbo_method: :delete} do %>
+        <i class='bx bxs-trash bxs card-link borrar'></i>
+      <% end %>
     </div>
   </div>
 </section>

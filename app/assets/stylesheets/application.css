@@ -34,6 +34,33 @@
   margin: 3px;
   color: #fff;
 }
+
+.bxs {
+  color: #1474fc;
+  font-size: 31px;
+  gap: 20px;
+}
+
+.editar:hover::before {
+  content: "Editar";
+  color: #ffa500;
+  font-size: 24px;
+  
+}
+
+.atras:hover::before {
+  content: "Atras";
+  color: #1474fc;
+  font-size: 24px;
+  
+}
+
+.borrar:hover::before {
+  content: "Borrar";
+  color: #ff0000;
+  font-size: 24px;
+  
+}
 /*Producto*/
 
 .tarjeta{
@@ -93,8 +120,13 @@ ul li {
  .entity {
    display: flex;
    justify-content: center;
+   gap: 20px;
  }
 
+
+ .fa-pencil {
+   color: #333;
+ }
  .users-avatar {
    display: flex;
    justify-content: center;
