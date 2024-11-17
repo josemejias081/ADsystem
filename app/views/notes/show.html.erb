@@ -16,11 +16,10 @@
     <section class="datos-cliente">
       <h3>
         <% if @note.entity.client? %>
-          DATOS DEL CLIENTE
+          <strong>Datos del Client / Nota de Venta</strong>
         <% elsif @note.entity.supplier? %>
-          DATOS DEL PROVEEDOR
+          <strong>Datos del Proveedor / Nota de Compra</strong>
         <% end %>
-      
       </h3>
       <ul class="client">
         <li><strong>Empresa:</strong> <%= @note.entity.name %></li>

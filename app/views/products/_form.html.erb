@@ -26,11 +26,11 @@
       <div class="row">
         <div class=" col-md-3 form-group"> 
           <%= f.label :Costo, style: "display: block" %>
-          <%= f.text_field :cost,class: 'form-control' %>
+          <%= f.text_field :cost,class: 'form-control', id: "cost" %>
         </div>
         <div class=" col-md-3 form-group"> 
           <%= f.label :Porcentaje_de_ganancia, style: "display: block" %>
-          <%= f.text_field :markup_percentage,class: 'form-control' %>
+          <%= f.text_field :markup_percentage,class: 'form-control', id: "markup_percentage"%>
         </div>
         <div class=" col-md-3 form-group">
           <%= f.label :Existencia, style: "display: block" %>
@@ -38,7 +38,7 @@
         </div>
         <div class=" col-md-3 form-group"> 
           <%= f.label :Precio_de_venta, style: "display: block" %>
-          <%= f.text_field :price,class: 'form-control', readonly: true %>
+          <%= f.text_field :price,class: 'form-control', id: "price", readonly: true %>
         </div>
       </div>
 
@@ -60,4 +60,28 @@
       </div>
     <% end %>
   </div>
+  <script>
+    document.addEventListener('turbo:load', function() {
+      const costInput = document.getElementById('cost');
+      const markupPercentageInput = document.getElementById('markup_percentage');
+      const priceInput = document.getElementById('price');
+
+      function updateSellingPrice() {
+        const cost = parseFloat(costInput.value) || 0;
+        const markupPercentage = parseFloat(markupPercentageInput.value) || 0;
+        const price = cost * (1 + markupPercentage / 100);
+        priceInput.value = price.toFixed(2);
+      }
+
+      if (costInput && markupPercentageInput && priceInput) {
+        costInput.addEventListener('input', updateSellingPrice);
+        markupPercentageInput.addEventListener('input', updateSellingPrice);
+        // Llama a la función al cargar la página para que el precio de venta se establezca al inicio
+        updateSellingPrice();
+      } else {
+        console.error("Elementos del formulario no encontrados. Verifica los IDs de los elementos.");
+      }
+    });
+  </script>
 </div>
+
