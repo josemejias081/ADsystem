@@ -24,16 +24,10 @@
             <td><%= user.email %></td>
             <td><%= user.role %></td>
             <td><%= I18n.l(user.created_at, format: '%d/%m/%Y') %></td>
-            <td class="users-avatar">
-              <% if user.photo.attached? %>
-                <%= link_to user do %>
-                  <%= image_tag user.photo, size: "80x80", class: "img avatar" %>
-                <% end %>
-              <% else %>
-                <%= link_to user do %>
-                  <img src="/profile-pic.png" alt="Avatar" width="80" height="80" class="avatar">
-                <% end %>
-              <% end %>
+            <td class="actions">
+              <%= link_to  user do %>
+                <i class='bx bxs-show bxs ver'></i>
+              <% end%>
             </td>
           </tr>
           <% end %>
