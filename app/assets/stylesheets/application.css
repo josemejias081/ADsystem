@@ -41,31 +41,63 @@
   gap: 20px;
 }
 
-.editar:hover::before {
+.atras, .editar, .borrar {
+  position: relative;
+}
+
+.editar:hover::after {
   content: "Editar";
   color: #ffa500;
-  font-size: 24px;
+  font-size: 21px;
+  background-color: #fff; 
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+  font-family: Impact, sans-serif;
   
 }
 
-.atras:hover::before {
+.atras:hover::after {
   content: "Atras";
   color: #1474fc;
-  font-size: 24px;
+  font-size: 21px;
+  background-color: #fff; 
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+  font-family: Impact, sans-serif;
   
 }
 
-.borrar:hover::before {
+.borrar:hover::after {
   content: "Borrar";
   color: #ff0000;
-  font-size: 24px;
-  
+  font-size: 21px;
+  background-color: #fff; 
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+  font-family: Impact, sans-serif;
 }
 
 .ver:hover::before {
   content: "Ver";
   color: #008000;
   font-size: 24px;
+  font-family: Impact, sans-serif;
+  font-weight: bold;
   
 }
 /*Producto*/

@@ -21,9 +21,15 @@
     </div>
     <hr>
     <div class="card-footer text-center">
-      <%= link_to "Editar", edit_product_path(@product), class: "btn-tarjeta" %>
-      <%= link_to "Volver", products_path, class: "btn-tarjeta" %>
-      <%= link_to "Eliminar", @product, data: {turbo_method: :delete}, class: "btn-tarjeta" %>
+      <%= link_to products_path do %>
+        <i class='bx bx-arrow-back bxs card-link atras'></i>
+      <% end %>
+      <%= link_to edit_product_path(@product) do %>
+        <i class='bx bxs-message-edit bxs editar'></i>
+      <% end %>
+      <%= link_to @product, data: {turbo_method: :delete} do %>
+        <i class='bx bxs-trash bxs card-link borrar'></i>
+      <% end %>
     </div>
   </div>
 </section>
